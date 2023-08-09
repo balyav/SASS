@@ -1,0 +1,21 @@
+body {
+  background-color: #333;
+}
+
+button {
+  width: 100px;
+  height: 100px;
+  border-radius: 100px;
+  font-size: 25px;
+  background: linear-gradient(#005c00, #b3ffb3, #005c00);
+  border: 3px solid #005c00;
+  color: #333;
+  box-shadow: 0px 0px 5px 3px #1a1a1a;
+  text-shadow: 0.5px 0.5px 1px #b3ffb3, -0.5px -0.5px 1px #005c00;
+  cursor: pointer;
+}
+button:hover {
+  background: linear-gradient(#b3ffb3, #005c00, #b3ffb3);
+  border-color: green;
+  box-shadow: 0px 0px 0.2px 1px #1a1a1a;
+}/*# sourceMappingURL=style.css.map */
