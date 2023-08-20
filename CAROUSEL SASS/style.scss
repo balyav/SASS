@@ -1,0 +1,73 @@
+$DarkColor: #222;
+$cols:12;
+$rows:8;
+$size:100px;
+@mixin center {
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+}
+
+@mixin effectFadeOut {
+    animation: fadeOut  20s  3 linear;
+    animation-delay: 0.1s * random(5) ;
+} 
+body {
+    background-color: $DarkColor;
+    color: lawngreen;
+}
+#carousel {
+    width: $cols * $size;
+    height: $rows * $size;
+    border: $size * 0.05 solid lighten($DarkColor,10%);
+    @include center;
+
+    .slide {
+        display: grid;
+        grid-template-columns: repeat($cols, $size);
+        grid-template-rows: repeat($rows, $size);
+        width: inherit;
+        height: inherit;
+        //HW 1
+        text-align: center;
+        line-height: $size;
+
+        $offX:0;
+        $offY:0;
+        
+        @for $n from 1 through 96 {
+            &>div:nth-child(#{$n}) {
+                background-image: url(images/1.jpg);
+                background-position-x: $offX * - $size ;
+                background-position-y: $offY * - $size ;
+                @include effectFadeOut();
+                /////////////////////////////////////
+                // animation-delay: 1s * $offX / $rows ;
+                //animation-delay: 1s * ($offX / $cols + $offY / $rows);
+                animation-fill-mode: forwards;
+                /////////////////////////////////////
+            }
+
+            $offX:$offX +1;
+            @if $offX % $cols == 0 {
+                $offX:0;
+                $offY: $offY +1;
+            }
+        }
+
+        @keyframes fadeOut {
+            0%   {background-image: url(images/1.jpg);}
+            20%  {background-image: url(images/1.jpg);}
+            40%  {background-image: url(images/2.jpg);}
+            60%  {background-image: url(images/2.jpg);}
+            80%  {background-image: url(images/3.jpg);}
+            100% {background-image: url(images/3.jpg);}
+            
+
+        }
+
+    }
+}
